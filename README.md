@@ -1,64 +1,117 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Andon Calling System
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A real-time production monitoring and alerting system built with Laravel, designed to help manufacturing plants monitor production lines, track issues, and improve operational efficiency.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Real-time Monitoring**: Track production lines in real-time with WebSockets
+- **OPC Server Integration**: Connect to OPC servers for industrial automation data
+- **Production Tracking**: Monitor production orders, work centers, and line status
+- **Quality Control**: Track OK/NG parts and rework operations
+- **Downtime Management**: Record and analyze production line downtime
+- **Multi-plant Support**: Manage multiple plants and regions from a single system
+- **User Management**: Role-based access control for different user types
+- **Dashboard & Reporting**: Visualize production data with charts and reports
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Technology Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Backend**: Laravel 8.x
+- **Frontend**: Bootstrap 5, Chart.js
+- **Real-time**: Laravel WebSockets
+- **Database**: MySQL
+- **OPC Integration**: Custom OPC DA/AE client
 
-## Learning Laravel
+## Requirements
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP 8.0 or higher
+- Composer
+- Node.js & NPM
+- MySQL 5.7+ or MariaDB 10.3+
+- Redis (for queue and WebSockets)
+- OPC Server (optional, for production data)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Installation
 
-## Laravel Sponsors
+1. Clone the repository:
+   ```bash
+   git clone [repository-url]
+   cd calling-system-main
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+2. Install PHP dependencies:
+   ```bash
+   composer install
+   ```
 
-### Premium Partners
+3. Install NPM dependencies:
+   ```bash
+   npm install
+   npm run dev
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+4. Copy the environment file:
+   ```bash
+   cp .env.example .env
+   ```
 
-## Contributing
+5. Generate application key:
+   ```bash
+   php artisan key:generate
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+6. Configure your database and other settings in the `.env` file:
+   ```
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=your_database
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   
+   BROADCAST_DRIVER=redis
+   QUEUE_CONNECTION=redis
+   
+   # OPC Server Configuration
+   OPC_SERVER_HOST=127.0.0.1
+   OPC_SERVER_PROGID=Your.OPC.Server
+   ```
 
-## Code of Conduct
+7. Run database migrations and seed initial data:
+   ```bash
+   php artisan migrate --seed
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+8. Start the queue worker and WebSocket server:
+   ```bash
+   php artisan queue:work
+   php artisan websockets:serve
+   ```
 
-## Security Vulnerabilities
+9. Start the development server:
+   ```bash
+   php artisan serve
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Usage
+
+1. Access the application at `http://localhost:8000`
+2. Log in with the default admin credentials (if seeded):
+   - Email: admin@example.com
+   - Password: password
+3. Configure your plants, production lines, and OPC server connections
+4. Start monitoring your production lines
+
+## Batch Files
+
+The project includes two batch files for easier development:
+
+- `run_websocket.bat`: Starts the WebSocket server
+- `run_opcadapter.bat`: Starts the OPC adapter service
+
+## Nginx Configuration
+
+A sample Nginx configuration file is provided as `sample_nginx.conf` for production deployment.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
