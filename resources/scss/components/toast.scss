@@ -1,0 +1,51 @@
+@import "../commons.scss";
+
+.toast-container {
+    margin-top: $topbar-height;
+    z-index: 999;
+}
+.toast-header,
+.toast-body {
+    color: black;
+}
+.toast-primary .toast-header {
+    background-color: $blue-200;
+}
+.toast-primary .toast-body {
+    background-color: $blue-100;
+}
+
+.toast-secondary .toast-header {
+    background-color: $gray-200;
+}
+.toast-secondary .toast-body {
+    background-color: $gray-100;
+}
+
+.toast-success .toast-header {
+    background-color: $teal-300;
+}
+.toast-success .toast-body {
+    background-color: $teal-200;
+}
+
+.toast-danger .toast-header {
+    background-color: $red-200;
+}
+.toast-danger .toast-body {
+    background-color: $red-100;
+}
+
+.toast-warning .toast-header {
+    background-color: $yellow-200;
+}
+.toast-warning .toast-body {
+    background-color: $yellow-100;
+}
+
+.toast-info .toast-header {
+    background-color: $cyan-200;
+}
+.toast-info .toast-body {
+    background-color: $cyan-100;
+}

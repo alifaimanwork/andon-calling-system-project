@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <title>Clock Time Picker</title>
+</head>
+
+<body>
+    TIME 1 : <input type="text" class="clock-picker" value="00:00">
+    TIME 2 : <input type="text" class="clock-picker" value="00:00">
+    TIME 3 : <input type="text" class="clock-picker" value="00:00">
+    TIME 4 : <input type="text" class="clock-picker" value="00:00">
+    TIME 5 : <input type="text" class="clock-picker" value="00:00">
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/jquery-clock-timepicker.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $(".clock-picker").clockTimePicker({
+            required: true,
+        });
+    });
+</script>
+
+</html>

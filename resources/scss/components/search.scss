@@ -1,0 +1,26 @@
+@import "../commons.scss";
+
+.search-header {
+    color: white;
+    background-color: #000080;
+    font-family: "Roboto", sans-serif;
+}
+
+.chevron {
+    display: inline-block;
+    transition: all 0.25s ease-out;
+}
+
+.collapsed i.chevron {
+    transform: rotateX(-180deg);
+    transform-origin: 50% 50%;
+}
+
+.search-box {
+    border: 1px solid #c7c7c7;
+    margin-bottom: 0.5rem;
+}
+
+.search-container {
+    padding: 0.5rem;
+}

@@ -1,0 +1,441 @@
+@import "fonts/roboto.css";
+@import "fonts/roboto-mono.css";
+@import "fonts/poppins.css";
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  .page,
+  .page-landscape {
+    page-break-inside: avoid;
+    page-break-after: always;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    size: 210mm 297mm;
+  }
+  html,
+  body {
+    width: 210mm !important;
+    height: 260mm !important;
+    overflow: visible !important;
+  }
+  .noprint {
+    display: none;
+  }
+  .no-page-break {
+    page-break-inside: avoid;
+  }
+  .page,
+  .page-landscape {
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+  }
+
+  .pbreak {
+    page-break-after: always;
+  }
+}
+
+@media screen {
+  .page,
+  .page-landscape {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 5px #bbb;
+  }
+  body {
+    background: #ddd;
+  }
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  position: relative;
+  overflow: hidden;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.page-container {
+  padding-top: 10mm;
+  padding-left: 15mm;
+  padding-right: 15mm;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-rotate {
+  width: 297mm;
+  height: 210mm;
+  transform-origin: top left;
+  transform: translate(0, 297mm) rotate(-90deg);
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.letterhead {
+  height: 20mm;
+}
+
+.letterhead-landscape {
+  height: 16mm;
+}
+
+.letterhead-img {
+  max-height: 100%;
+}
+/* Utils */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #979797;
+  border-radius: 0rem;
+}
+
+.component-header {
+  font-size: 12pt;
+}
+
+.card-header {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid #979797;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", "Roboto", sans-serif;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.mb-3,
+.my-3 {
+  margin-bottom: 0.75rem !important;
+}
+
+.mt-3,
+.my-3 {
+  margin-top: 0.75rem !important;
+}
+
+.mb-2,
+.my-2 {
+  margin-bottom: 0.5rem !important;
+}
+
+.mt-2,
+.my-2 {
+  margin-top: 0.5rem !important;
+}
+
+.mr-1,
+.mx-1 {
+  margin-right: 0.25rem !important;
+}
+
+.ml-1,
+.mx-1 {
+  margin-left: 0.25rem !important;
+}
+.mt-1,
+.my-1 {
+  margin-top: 0.25rem !important;
+}
+
+table {
+  border-collapse: collapse;
+}
+.table {
+  border-collapse: collapse !important;
+}
+.table {
+  width: 100%;
+  color: #212529;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.rtable {
+  border-collapse: collapse !important;
+}
+.rtable {
+  color: #212529;
+}
+
+.rtable th,
+.rtable td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+}
+
+.rtable thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.rtable tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+.text-m {
+  font-size: 0.9em;
+}
+
+.text-sm {
+  font-size: 0.75em;
+}
+.text-xsm {
+  font-size: 3pt;
+}
+.text-ssm {
+  font-size: 5pt;
+}
+.text-smm {
+  font-size: 0.6em;
+}
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+.table-bordered {
+  border: 1px solid #979797;
+}
+.table-bordered thead th {
+  vertical-align: middle;
+  border-bottom: 2px solid #979797;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #979797;
+}
+
+.table-bordered-black th,
+.table-bordered-black td {
+  border: 0.5pt solid black;
+}
+
+.table-borderless th,
+.table-borderless td,
+.table-borderless thead th,
+.table-borderless tbody + tbody {
+  border: 0;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.text-right {
+  text-align: right !important;
+}
+.text-left {
+  text-align: left !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-table {
+  font-size: 0.75em;
+}
+.text-table-xsm {
+  font-size: 3pt;
+}
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.badge-pill {
+  padding-right: 0.6em;
+  padding-left: 0.6em;
+  border-radius: 10rem;
+}
+
+.badge-secondary {
+  color: #fff;
+  background-color: #6c757d;
+}
+.badge-light {
+  color: #212529;
+  background-color: #ffffff;
+}
+.badge-border {
+  border: 1px solid #6c757d;
+}
+
+.align-middle {
+  vertical-align: middle !important;
+}
+.black-border {
+  border-color: black;
+}
+
+.no-border {
+  border: 0 !important;
+}
+.respontable-fullwidth {
+  width: auto;
+}
+.respontable-score-col {
+  width: 3mm;
+  padding-left: 1mm !important;
+  padding-right: 1mm !important;
+}
+.respontable-number-width {
+  width: 3mm;
+}
+.respontable-item-width {
+  width: 45mm;
+}
+
+.tr-marker {
+  color: #666;
+  text-align: right;
+}
+
+.cover-box {
+  position: absolute;
+  border: 1px solid black;
+  top: 10mm;
+  bottom: 10mm;
+  left: 10mm;
+  right: 10mm;
+  text-align: center;
+}
+.cover-text {
+  font-family: "Times New Roman";
+  font-size: 18pt;
+  font-weight: bold;
+  margin-left: 20mm;
+  margin-right: 20mm;
+}
+.cover-img {
+  width: 120mm;
+  margin-top: 20mm;
+  margin-bottom: 20mm;
+}
+.cover-mid {
+  margin-top: 40mm;
+  margin-bottom: 40mm;
+}
+.cover-addr {
+  margin-bottom: 0.7em;
+}
+.cover-month {
+  margin-top: 20mm;
+}
+.cover-letter-container {
+  padding: 20mm;
+  font-family: "Times New Roman", Times, serif;
+}
+.cover-letter-container h1 {
+  text-align: left;
+  font-size: 14pt;
+}
+.cover-letter-container p {
+  text-align: justify;
+}
+
+.font-red {
+  color: red;
+}
+
+.chart-card-mt {
+  margin-top: 5mm;
+}
+
+.text-table-sm {
+  font-size: 0.7em;
+}
+
+.font-mono {
+  font-family: "Roboto Mono", Consolas, monospace;
+}
+
+.d-flex {
+  display: flex;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+.flex-fill {
+  flex-grow: 1;
+}
